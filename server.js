@@ -149,11 +149,6 @@ app.put('/image', (req, res) => {
     .catch(err => res.status(404).json('Unable To entries'))
 })
 
-app.post('/imageurl', (req, res) => {
-
-    })
-
-
-    app.listen(3000, () => {
-
-    })
+app.listen(process.env.PORT || 3000, () => {
+  console.log('its working');
+})
