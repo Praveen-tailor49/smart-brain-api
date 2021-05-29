@@ -49,7 +49,7 @@ const database = {
 }
 
 app.get('/', (req, res) => {
-  res.send(database.users);
+  res.send('its working');
 })
 
 app.post('/signin', (req, res) => {
