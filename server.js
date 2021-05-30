@@ -14,7 +14,7 @@ const db = knex({
 
 db.select('*').from('ueers')
   .then(data => {})
-  .catch(err => console.log('error'))
+  .catch(err => console.log(err))
 
 const app = express();
 
@@ -102,7 +102,7 @@ app.post('/register', (req, res) => {
             })
             .then(user => {
               res.json(user[0]);
-            }).catch(err => console.log('error'))
+            }).catch(err => console.log(err))
         })
         .then(trx.commit)
         .catch(trx.rollback)
