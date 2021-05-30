@@ -13,6 +13,8 @@ const db = knex({
   }
 });
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+
 const app = express();
 
 app.use(bodyparser.json());
