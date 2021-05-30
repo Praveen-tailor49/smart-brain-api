@@ -14,7 +14,7 @@ const db = knex({
 
 db.select('*').from('ueers')
   .then(data => {})
-  .catch(err => console.log(err))
+  .catch(err => console.log(err, '******LINE-17*******'))
 
 const app = express();
 
@@ -46,7 +46,7 @@ const database = {
 }
 
 app.get('/', (req, res) => {
-  res.send('its working');
+  res.send('its working get');
 })
 
 app.post('/signin', (req, res) => {
@@ -102,7 +102,7 @@ app.post('/register', (req, res) => {
             })
             .then(user => {
               res.json(user[0]);
-            }).catch(err => console.log(err))
+            }).catch(err => console.log(err, '******LINE-105*******'))
         })
         .then(trx.commit)
         .catch(trx.rollback)
@@ -144,5 +144,5 @@ app.put('/image', (req, res) => {
 })
 
 app.listen(process.env.PORT || 3000, () => {
-  console.log('its working');
+  console.log('its working listen');
 })
