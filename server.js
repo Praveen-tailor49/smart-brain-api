@@ -12,7 +12,9 @@ const db = knex({
   }
 });
 
-db.select('*').from('ueers').then(data => {});
+db.select('*').from('ueers')
+  .then(data => {})
+  .catch(err => console.log('error'))
 
 const app = express();
 
@@ -59,13 +61,10 @@ app.post('/signin', (req, res) => {
     .where('email', '=', email)
     .then(data => {
       const isValid = bcrypt.compareSync(password, data[0].hash);
-      // console.log(isValid);
       if (isValid) {
-        // console.log('inside if');
         return db.select('*').from('ueers')
           .where('email', '=', email)
           .then(user => {
-            // console.log(user);
             res.json(user[0])
           })
           .catch(err => res.status(404).json('unable to get user'))
@@ -103,7 +102,7 @@ app.post('/register', (req, res) => {
             })
             .then(user => {
               res.json(user[0]);
-            })
+            }).catch(err => console.log('error'))
         })
         .then(trx.commit)
         .catch(trx.rollback)
