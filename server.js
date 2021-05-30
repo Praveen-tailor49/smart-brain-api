@@ -12,38 +12,10 @@ const db = knex({
   }
 });
 
-// db.select('*').from('ueers')
-//   .then(data => {})
-//   .catch(err => console.log(err, '******LINE-17*******'));
-
 const app = express();
 
 app.use(bodyparser.json());
 app.use(cors())
-// const database = {
-//   users: [{
-//       id: '123',
-//       name: 'praveen',
-//       email: 'praveen@gmail.com',
-//       password: 'ban',
-//       entries: 0,
-//       joined: new Date()
-//     },
-//     {
-//       id: '124',
-//       name: 'manan',
-//       email: 'manan@gmail.com',
-//       password: 'ma',
-//       entries: 0,
-//       joined: new Date()
-//     }
-//   ],
-//   login: [{
-//     id: '987',
-//     hash: '',
-//     email: 'pr@gmail.com'
-//   }]
-// }
 
 app.get('/', (req, res) => {
   res.send('its working get');
@@ -102,7 +74,7 @@ app.post('/register', (req, res) => {
             })
             .then(user => {
               res.json(user[0]);
-            }).catch(err => console.log(err, '******LINE-105*******'))
+            }).catch(err => console.log(err, '******LINE-77*******'))
         })
         .then(trx.commit)
         .catch(trx.rollback)
